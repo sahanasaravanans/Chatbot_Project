@@ -1,0 +1,84 @@
+{% extends 'layout.html' %}
+
+{% block title %}AI Chatbot - Alumni Portal{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mb-4">
+    <div class="col-md-10">
+        <div class="card p-4 mb-4" style="background: linear-gradient(to right, #1a1a2e, #2d3748); border: none; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);">
+            <h1 class="text-white fw-bold"><i class="fas fa-robot me-3"></i>Alumni AI Chatbot</h1>
+            <p class="lead text-light">Get answers to your alumni-related questions using our AI-powered chatbot</p>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card shadow-sm mb-4" style="box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-robot me-2"></i> Alumni Assistant
+                        </h5>
+                    </div>
+                    <div class="card-body" style="background-color: #1e1e30; border: 1px solid #2e2e40;">
+                        <!-- Chat container -->
+                        <div id="chat-container" class="chat-container d-flex flex-column mb-3">
+                            <div class="chat-message bot-message">
+                                Hello, {{ current_user.first_name }}! I'm your Alumni Assistant. How can I help you today?
+                            </div>
+                            <!-- Chat history removed as requested -->
+                        </div>
+                        
+                        <!-- Chat input -->
+                        <div class="input-group">
+                            <input type="text" id="message-input" class="form-control border-primary" 
+                                   placeholder="Type your question here..." aria-label="Message"
+                                   style="background-color: #2a2a35; color: #ffffff; border-width: 2px;">
+                            <button class="btn btn-primary" type="button" id="send-button">
+                                <i class="fas fa-paper-plane me-1"></i> Send
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                
+                <div class="card shadow-sm" style="box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Suggested Questions</h5>
+                    </div>
+                    <div class="card-body" style="background-color: #1e1e30; border: 1px solid #2e2e40;">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-outline-light text-start suggestion-btn" type="button">What events are coming up?</button>
+                            <button class="btn btn-outline-light text-start suggestion-btn" type="button">How can I contact the alumni office?</button>
+                            <button class="btn btn-outline-light text-start suggestion-btn" type="button">When is the next reunion?</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+<script>
+    // Suggested questions functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const suggestionButtons = document.querySelectorAll('.suggestion-btn');
+        const messageInput = document.getElementById('message-input');
+        const sendButton = document.getElementById('send-button');
+        
+        suggestionButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                messageInput.value = this.textContent;
+                sendButton.click();
+            });
+        });
+    });
+</script>
+{% endblock %}

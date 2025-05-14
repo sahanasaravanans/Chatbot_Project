@@ -1,0 +1,72 @@
+/* Custom styles for Alumni Portal */
+
+/* Chat container styling */
+.chat-container {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.chat-message {
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    max-width: 80%;
+}
+
+.user-message {
+    background-color: var(--bs-primary-bg-subtle);
+    margin-left: auto;
+    border-top-right-radius: 0;
+}
+
+.bot-message {
+    background-color: var(--bs-secondary-bg-subtle);
+    margin-right: auto;
+    border-top-left-radius: 0;
+}
+
+.bot-image {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+/* Dashboard card styling */
+.dashboard-card {
+    transition: transform 0.3s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Event card styling */
+.event-card {
+    transition: all 0.3s;
+}
+
+.event-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.event-date {
+    color: var(--bs-info);
+}
+
+/* Feature icon styling on homepage */
+.feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+}
+
+/* Update current year in footer */
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+});

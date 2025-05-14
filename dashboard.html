@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+
+{% block title %}Dashboard - Alumni Portal{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col">
+        <div class="card p-4 mb-4" style="background: linear-gradient(to right, #1a1a2e, #2d3748); border: none; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);">
+            <h1 class="text-white fw-bold">Welcome, {{ user.first_name }}!</h1>
+            <p class="lead text-light">Class of <span class="badge bg-primary">{{ user.graduation_year }}</span></p>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4 mb-5">
+    <div class="col-md-4">
+        <div class="card dashboard-card h-100" style="background: linear-gradient(to bottom, #1e3a8a, #2563eb); color: white; border: none;">
+            <div class="card-body text-center">
+                <i class="fas fa-calendar-alt fa-3x mb-3 text-white-50"></i>
+                <h3 class="card-title fw-bold">Upcoming Events</h3>
+                <p class="card-text text-white-75">Discover and register for alumni events</p>
+                <a href="{{ url_for('events') }}" class="btn btn-light">View Events</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card dashboard-card h-100" style="background: linear-gradient(to bottom, #065f46, #059669); color: white; border: none;">
+            <div class="card-body text-center">
+                <i class="fas fa-robot fa-3x mb-3 text-white-50"></i>
+                <h3 class="card-title fw-bold">Alumni Chat</h3>
+                <p class="card-text text-white-75">Ask questions using our AI-powered chatbot</p>
+                <a href="{{ url_for('chatbot_page') }}" class="btn btn-light">Start Chatting</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card dashboard-card h-100" style="background: linear-gradient(to bottom, #0e7490, #06b6d4); color: white; border: none;">
+            <div class="card-body text-center">
+                <i class="fas fa-user-circle fa-3x mb-3 text-white-50"></i>
+                <h3 class="card-title fw-bold">Your Profile</h3>
+                <p class="card-text text-white-75">Update your information and preferences</p>
+                <a href="{{ url_for('edit_profile') }}" class="btn btn-light">Edit Profile</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"><i class="fas fa-bullhorn me-2"></i>Announcements</h4>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-warning">
+                    <h5><i class="fas fa-star me-2"></i>Alumni Contributions Needed!</h5>
+                    <p>We're looking for alumni willing to share their career journeys with current students. If interested, please contact the alumni office.</p>
+                </div>
+                <div class="alert alert-info">
+                    <h5><i class="fas fa-award me-2"></i>Annual Alumni Awards</h5>
+                    <p>Nominations for this year's Distinguished Alumni Awards are now open. Submit your response to the alumni cell</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
